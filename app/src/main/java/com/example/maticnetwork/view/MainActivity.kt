@@ -1,7 +1,8 @@
-package com.example.maticnetwork
+package com.example.maticnetwork.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.maticnetwork.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -9,4 +10,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+
 }
