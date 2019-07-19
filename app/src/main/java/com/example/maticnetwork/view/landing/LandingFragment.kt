@@ -1,4 +1,4 @@
-package com.example.maticnetwork.view
+package com.example.maticnetwork.view.landing
 
 import android.os.Bundle
 import android.view.LayoutInflater

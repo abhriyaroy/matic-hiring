@@ -15,4 +15,8 @@ class MainPresenterImpl : MainPresenter {
     mainView = null
   }
 
+  override fun decorateView() {
+    mainView?.showLandingScreen()
+  }
+
 }

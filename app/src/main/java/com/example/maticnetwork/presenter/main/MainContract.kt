@@ -5,7 +5,11 @@ import com.example.maticnetwork.presenter.BaseView
 
 interface MainContract {
 
-  interface MainView : BaseView
+  interface MainView : BaseView{
+    fun showLandingScreen()
+  }
 
-  interface MainPresenter : BasePresenter<MainView>
+  interface MainPresenter : BasePresenter<MainView>{
+    fun decorateView()
+  }
 }
