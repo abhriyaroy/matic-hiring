@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.main.MainContract.MainPresenter
 import com.example.maticnetwork.presenter.main.MainContract.MainView
+import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity(), MainView {
   internal lateinit var mainPresenter: MainPresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     mainPresenter.attachView(this)
