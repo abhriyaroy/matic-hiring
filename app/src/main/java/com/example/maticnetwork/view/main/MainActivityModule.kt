@@ -6,10 +6,10 @@ import com.example.maticnetwork.presenter.main.MainPresenterImpl
 import dagger.Module
 import dagger.Provides
 
-@PerActivity
 @Module
 class MainActivityModule {
 
+  @PerActivity
   @Provides
   fun providesMainPresenter(): MainPresenter = MainPresenterImpl()
 
