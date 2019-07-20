@@ -61,7 +61,7 @@ class UserAccountFragment : Fragment(), UserAccountView {
   }
 
   override fun getPassword(): String {
-    return inflatedView?.findViewById<EditText>(R.id.usernameEditText)?.text.toString()
+    return inflatedView?.findViewById<EditText>(R.id.passwordEditText)?.text.toString()
   }
 
   override fun showUsernameRequiredMessage() {
@@ -72,7 +72,7 @@ class UserAccountFragment : Fragment(), UserAccountView {
 
   override fun showPasswordRequiredMessage() {
     with(context!!) {
-      showToast(stringRes(R.string.user_account_fragment_username_required_message))
+      showToast(stringRes(R.string.user_account_fragment_password_required_message))
     }
   }
 

@@ -30,6 +30,7 @@ class UserAccountPresenterImpl : UserAccountPresenter {
   override fun handleSubmitClick() {
     val username = userAccountView?.getUsername()
     val password = userAccountView?.getPassword()
+    println("passwqord is $password")
     if (username == null || username.isBlank()) {
       userAccountView?.showUsernameRequiredMessage()
     } else if (password == null || password.isBlank()) {
