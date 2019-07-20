@@ -9,8 +9,14 @@ import androidx.fragment.app.Fragment
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.landing.LandingContract.LandingPresenter
 import com.example.maticnetwork.presenter.landing.LandingContract.LandingView
+import com.example.maticnetwork.view.signin.AccountType.EXISTING_USER
+import com.example.maticnetwork.view.signin.AccountType.NEW_USER
+import com.example.maticnetwork.view.signin.UserAccountFragment.Companion.newInstance
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_landing.view.*
 import javax.inject.Inject
+
+const val LANDING_FRAGMENT_TAG = "LANDING_FRAGMENT"
 
 class LandingFragment : Fragment(), LandingView {
 
@@ -27,21 +33,43 @@ class LandingFragment : Fragment(), LandingView {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+    landingPresenter.attachView(this)
+    initListeners(view)
+  }
 
+  override fun onResume() {
+    println("resumedtolanding")
+    super.onResume()
+  }
+
+  override fun onDestroyView() {
+    landingPresenter.detachView()
+    super.onDestroyView()
   }
 
   override fun redirectToNewAccount() {
-    
+    showFragment(R.id.mainContainerFragment, newInstance(NEW_USER))
   }
 
   override fun redirectToSignIn() {
+    showFragment(R.id.mainContainerFragment, newInstance(EXISTING_USER))
+  }
 
+  private fun initListeners(view: View) {
+    with(view) {
+      newAccountButton.setOnClickListener {
+        landingPresenter.handleNewAccountClick()
+      }
+      signInButton.setOnClickListener {
+        landingPresenter.handleSignInClick()
+      }
+    }
   }
 
   private fun showFragment(@IdRes fragmentId: Int, fragment: Fragment) {
     activity!!.supportFragmentManager.beginTransaction()
       .replace(fragmentId, fragment)
-      .commitAllowingStateLoss()
+      .commit()
   }
 
 }
