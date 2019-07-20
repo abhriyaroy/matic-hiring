@@ -11,6 +11,7 @@ import com.example.maticnetwork.presenter.landing.LandingContract.LandingPresent
 import com.example.maticnetwork.presenter.landing.LandingContract.LandingView
 import com.example.maticnetwork.view.signin.AccountType.EXISTING_USER
 import com.example.maticnetwork.view.signin.AccountType.NEW_USER
+import com.example.maticnetwork.view.signin.USER_ACCOUNT_FRAGMENT_TAG
 import com.example.maticnetwork.view.signin.UserAccountFragment.Companion.newInstance
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_landing.view.*
@@ -68,7 +69,8 @@ class LandingFragment : Fragment(), LandingView {
 
   private fun showFragment(@IdRes fragmentId: Int, fragment: Fragment) {
     activity!!.supportFragmentManager.beginTransaction()
-      .replace(fragmentId, fragment)
+      .replace(fragmentId, fragment, USER_ACCOUNT_FRAGMENT_TAG)
+      .addToBackStack(USER_ACCOUNT_FRAGMENT_TAG)
       .commit()
   }
 

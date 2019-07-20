@@ -1,13 +1,18 @@
 package com.example.maticnetwork.view.main
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.main.MainContract.MainPresenter
 import com.example.maticnetwork.presenter.main.MainContract.MainView
+import com.example.maticnetwork.utils.showToast
+import com.example.maticnetwork.utils.stringRes
 import com.example.maticnetwork.view.landing.LANDING_FRAGMENT_TAG
 import com.example.maticnetwork.view.landing.LandingFragment
 import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity(), MainView {
@@ -28,11 +33,41 @@ class MainActivity : DaggerAppCompatActivity(), MainView {
     super.onDestroy()
   }
 
+  override fun onBackPressed() {
+    mainPresenter.handleBackPress()
+  }
+
   override fun showLandingScreen() {
     supportFragmentManager.beginTransaction()
       .replace(R.id.mainContainerFragment, LandingFragment(), LANDING_FRAGMENT_TAG)
       .addToBackStack(LANDING_FRAGMENT_TAG)
       .commit()
+  }
+
+  override fun getCurrentScreenTag(): String {
+    with(supportFragmentManager) {
+      return getBackStackEntryAt(backStackEntryCount - 1).name.toString()
+    }
+  }
+
+  override fun showPreviousScreen() {
+    supportFragmentManager.popBackStack()
+  }
+
+  override fun showExitConfirmation() {
+    showToast(stringRes(R.string.main_activity_exit_confirmation_message))
+  }
+
+  override fun startBackPressedFlagResetTimer() {
+    withDelayOnMain(TimeUnit.SECONDS.toMillis(2)) { mainPresenter.notifyTimerExpired() }
+  }
+
+  override fun exitApp() {
+    finish()
+  }
+
+  private fun withDelayOnMain(delay: Long, block: () -> Unit) {
+    Handler(Looper.getMainLooper()).postDelayed(Runnable(block), delay)
   }
 
 }

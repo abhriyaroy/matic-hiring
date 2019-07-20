@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.maticnetwork.R
 import com.example.maticnetwork.view.signin.AccountType.EXISTING_USER
 
+const val USER_ACCOUNT_FRAGMENT_TAG= "USER_ACCOUNT_FRAGMENT"
 
 class UserAccountFragment : Fragment() {
 
