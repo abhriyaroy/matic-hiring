@@ -9,6 +9,7 @@ import com.example.maticnetwork.view.useraccount.AccountType.NEW_USER
 class UserAccountPresenterImpl : UserAccountPresenter {
 
   private var userAccountView: UserAccountView? = null
+  private var accountType: AccountType = EXISTING_USER
 
   override fun attachView(view: UserAccountView) {
     userAccountView = view
@@ -19,9 +20,22 @@ class UserAccountPresenterImpl : UserAccountPresenter {
   }
 
   override fun decorateView(accountType: AccountType) {
+    this.accountType = accountType
     when (accountType) {
       NEW_USER -> userAccountView?.showNewAccountButton()
       EXISTING_USER -> userAccountView?.showExistingAccountButton()
+    }
+  }
+
+  override fun handleSubmitClick() {
+    val username = userAccountView?.getUsername()
+    val password = userAccountView?.getPassword()
+    if (username == null || username.isBlank()) {
+      userAccountView?.showUsernameRequiredMessage()
+    } else if (password == null || password.isBlank()) {
+      userAccountView?.showPasswordRequiredMessage()
+    } else {
+
     }
   }
 

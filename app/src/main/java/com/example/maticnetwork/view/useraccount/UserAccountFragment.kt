@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.useraccount.UserAccountContract.UserAccountPresenter
 import com.example.maticnetwork.presenter.useraccount.UserAccountContract.UserAccountView
+import com.example.maticnetwork.utils.showToast
 import com.example.maticnetwork.utils.stringRes
 import com.example.maticnetwork.view.useraccount.AccountType.EXISTING_USER
 import dagger.android.support.AndroidSupportInjection
@@ -36,6 +38,7 @@ class UserAccountFragment : Fragment(), UserAccountView {
     inflatedView = view
     userAccountPresenter.attachView(this)
     userAccountPresenter.decorateView(accountType)
+    initClickListener()
   }
 
   override fun onDestroy() {
@@ -53,6 +56,31 @@ class UserAccountFragment : Fragment(), UserAccountView {
       context!!.stringRes(R.string.user_account_fragment_button_signin_text)
   }
 
+  override fun getUsername(): String {
+    return inflatedView?.findViewById<EditText>(R.id.usernameEditText)?.text.toString()
+  }
+
+  override fun getPassword(): String {
+    return inflatedView?.findViewById<EditText>(R.id.usernameEditText)?.text.toString()
+  }
+
+  override fun showUsernameRequiredMessage() {
+    with(context!!) {
+      showToast(stringRes(R.string.user_account_fragment_username_required_message))
+    }
+  }
+
+  override fun showPasswordRequiredMessage() {
+    with(context!!) {
+      showToast(stringRes(R.string.user_account_fragment_username_required_message))
+    }
+  }
+
+  private fun initClickListener() {
+    inflatedView?.findViewById<Button>(R.id.submitButton)?.setOnClickListener {
+      userAccountPresenter.handleSubmitClick()
+    }
+  }
 
   companion object {
     @JvmStatic

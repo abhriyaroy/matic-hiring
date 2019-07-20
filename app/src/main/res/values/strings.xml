@@ -10,4 +10,6 @@
   <string name="user_account_fragment_username_hint">Username</string>
   <string name="user_account_fragment_button_create_account_text">Create Account</string>
   <string name="user_account_fragment_button_signin_text">Sign In</string>
+  <string name="user_account_fragment_username_required_message">Please type an username</string>
+  <string name="user_account_fragment_password_required_message">Please type a password</string>
 </resources>
