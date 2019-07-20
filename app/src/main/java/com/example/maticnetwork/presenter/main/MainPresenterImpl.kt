@@ -2,7 +2,7 @@ package com.example.maticnetwork.presenter.main
 
 import com.example.maticnetwork.presenter.main.MainContract.MainPresenter
 import com.example.maticnetwork.presenter.main.MainContract.MainView
-import com.example.maticnetwork.view.signin.USER_ACCOUNT_FRAGMENT_TAG
+import com.example.maticnetwork.view.useraccount.USER_ACCOUNT_FRAGMENT_TAG
 
 class MainPresenterImpl : MainPresenter {
 

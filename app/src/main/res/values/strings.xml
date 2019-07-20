@@ -6,7 +6,8 @@
   <string name="landing_fragment_sign_in_button_text">Sign In</string>
   <string name="landing_fragment_new_account_button_text">New Account</string>
 
-  <string name="user_account_fragment_button_text">Sign In</string>
   <string name="user_account_fragment_password_hint">Password</string>
   <string name="user_account_fragment_username_hint">Username</string>
+  <string name="user_account_fragment_button_create_account_text">Create Account</string>
+  <string name="user_account_fragment_button_signin_text">Sign In</string>
 </resources>

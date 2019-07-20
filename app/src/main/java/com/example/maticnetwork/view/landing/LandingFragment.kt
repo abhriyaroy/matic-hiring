@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.landing.LandingContract.LandingPresenter
 import com.example.maticnetwork.presenter.landing.LandingContract.LandingView
-import com.example.maticnetwork.view.signin.AccountType.EXISTING_USER
-import com.example.maticnetwork.view.signin.AccountType.NEW_USER
-import com.example.maticnetwork.view.signin.USER_ACCOUNT_FRAGMENT_TAG
-import com.example.maticnetwork.view.signin.UserAccountFragment.Companion.newInstance
+import com.example.maticnetwork.view.useraccount.AccountType.EXISTING_USER
+import com.example.maticnetwork.view.useraccount.AccountType.NEW_USER
+import com.example.maticnetwork.view.useraccount.USER_ACCOUNT_FRAGMENT_TAG
+import com.example.maticnetwork.view.useraccount.UserAccountFragment.Companion.newInstance
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_landing.view.*
 import javax.inject.Inject
@@ -39,7 +39,6 @@ class LandingFragment : Fragment(), LandingView {
   }
 
   override fun onResume() {
-    println("resumedtolanding")
     super.onResume()
   }
 
@@ -61,7 +60,7 @@ class LandingFragment : Fragment(), LandingView {
       newAccountButton.setOnClickListener {
         landingPresenter.handleNewAccountClick()
       }
-      signInButton.setOnClickListener {
+      submitButton.setOnClickListener {
         landingPresenter.handleSignInClick()
       }
     }
