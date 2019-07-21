@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.landing.LandingContract.LandingPresenter
 import com.example.maticnetwork.presenter.landing.LandingContract.LandingView
+import com.example.maticnetwork.view.BaseFragment
 import com.example.maticnetwork.view.useraccount.AccountType.EXISTING_USER
 import com.example.maticnetwork.view.useraccount.AccountType.NEW_USER
 import com.example.maticnetwork.view.useraccount.USER_ACCOUNT_FRAGMENT_TAG
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 const val LANDING_FRAGMENT_TAG = "LANDING_FRAGMENT"
 
-class LandingFragment : Fragment(), LandingView {
+class LandingFragment : BaseFragment(), LandingView {
 
   @Inject
   internal lateinit var landingPresenter: LandingPresenter

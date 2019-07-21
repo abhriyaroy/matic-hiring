@@ -13,6 +13,9 @@ interface UserAccountContract {
     fun getPassword() : String
     fun showUsernameRequiredMessage()
     fun showPasswordRequiredMessage()
+    fun redirectToHomeScreen()
+    fun showUserNotAuthorizedException()
+    fun showGenericException()
   }
 
   interface UserAccountPresenter : BasePresenter<UserAccountView> {

@@ -3,6 +3,7 @@ package com.example.maticnetwork.view.main
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.lifecycle.Lifecycle
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.main.MainContract.MainPresenter
 import com.example.maticnetwork.presenter.main.MainContract.MainView
@@ -10,6 +11,8 @@ import com.example.maticnetwork.utils.showToast
 import com.example.maticnetwork.utils.stringRes
 import com.example.maticnetwork.view.landing.LANDING_FRAGMENT_TAG
 import com.example.maticnetwork.view.landing.LandingFragment
+import com.uber.autodispose.ScopeProvider
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
 import java.util.concurrent.TimeUnit
@@ -35,6 +38,10 @@ class MainActivity : DaggerAppCompatActivity(), MainView {
 
   override fun onBackPressed() {
     mainPresenter.handleBackPress()
+  }
+
+  override fun getScope(): ScopeProvider {
+    return AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY)
   }
 
   override fun showLandingScreen() {

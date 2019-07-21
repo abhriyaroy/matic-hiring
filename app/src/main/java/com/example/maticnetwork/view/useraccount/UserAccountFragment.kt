@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.fragment.app.Fragment
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.useraccount.UserAccountContract.UserAccountPresenter
 import com.example.maticnetwork.presenter.useraccount.UserAccountContract.UserAccountView
 import com.example.maticnetwork.utils.showToast
 import com.example.maticnetwork.utils.stringRes
+import com.example.maticnetwork.view.BaseFragment
 import com.example.maticnetwork.view.useraccount.AccountType.EXISTING_USER
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 const val USER_ACCOUNT_FRAGMENT_TAG = "USER_ACCOUNT_FRAGMENT"
 
-class UserAccountFragment : Fragment(), UserAccountView {
+class UserAccountFragment : BaseFragment(), UserAccountView {
 
   @Inject
   internal lateinit var userAccountPresenter: UserAccountPresenter
@@ -73,6 +73,22 @@ class UserAccountFragment : Fragment(), UserAccountView {
   override fun showPasswordRequiredMessage() {
     with(context!!) {
       showToast(stringRes(R.string.user_account_fragment_password_required_message))
+    }
+  }
+
+  override fun redirectToHomeScreen() {
+    println("YYYYYYYYYYYYYYYAAAAAAAAAAAAAAAAAAYYYYYYYYYYYYYYYYYYYYYYYYY")
+  }
+
+  override fun showUserNotAuthorizedException() {
+    with(context!!) {
+      showToast(stringRes(R.string.user_account_user_not_authorized_message))
+    }
+  }
+
+  override fun showGenericException() {
+    with(context!!) {
+      showToast(stringRes(R.string.generic_exception_message))
     }
   }
 

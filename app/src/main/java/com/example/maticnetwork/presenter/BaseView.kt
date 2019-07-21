@@ -1,5 +1,7 @@
 package com.example.maticnetwork.presenter
 
-interface BaseView {
+import com.uber.autodispose.ScopeProvider
 
+interface BaseView {
+  fun getScope(): ScopeProvider
 }

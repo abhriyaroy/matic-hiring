@@ -1,5 +1,6 @@
 <resources>
   <string name="app_name">maticnetwork</string>
+  <string name="generic_exception_message">Something went wrong</string>
 
   <string name="main_activity_exit_confirmation_message">Press back again to exit</string>
 
@@ -12,4 +13,8 @@
   <string name="user_account_fragment_button_signin_text">Sign In</string>
   <string name="user_account_fragment_username_required_message">Please type an username</string>
   <string name="user_account_fragment_password_required_message">Please type a password</string>
+  <string name="user_account_user_not_authorized_message">Please use Create Account to register for a new Account</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
