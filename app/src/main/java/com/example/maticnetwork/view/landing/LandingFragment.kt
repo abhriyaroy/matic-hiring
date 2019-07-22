@@ -39,10 +39,6 @@ class LandingFragment : BaseFragment(), LandingView {
     initListeners(view)
   }
 
-  override fun onResume() {
-    super.onResume()
-  }
-
   override fun onDestroyView() {
     landingPresenter.detachView()
     super.onDestroyView()

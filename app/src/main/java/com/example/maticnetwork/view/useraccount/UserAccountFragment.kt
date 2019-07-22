@@ -25,7 +25,7 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
   @Inject
   internal lateinit var userAccountPresenter: UserAccountPresenter
   private var accountType = EXISTING_USER
-  private var inflatedView: View? = null
+  private var fragmentView: View? = null
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,7 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    inflatedView = view
+    fragmentView = view
     userAccountPresenter.attachView(this)
     userAccountPresenter.decorateView(accountType)
     initClickListener()
@@ -45,25 +45,26 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
 
   override fun onDestroy() {
     userAccountPresenter.detachView()
+    fragmentView = null
     super.onDestroy()
   }
 
   override fun showNewAccountButton() {
-    inflatedView?.findViewById<Button>(R.id.submitButton)?.text =
+    fragmentView?.findViewById<Button>(R.id.submitButton)?.text =
       context!!.stringRes(R.string.user_account_fragment_button_create_account_text)
   }
 
   override fun showExistingAccountButton() {
-    inflatedView?.findViewById<Button>(R.id.submitButton)?.text =
+    fragmentView?.findViewById<Button>(R.id.submitButton)?.text =
       context!!.stringRes(R.string.user_account_fragment_button_signin_text)
   }
 
   override fun getUsername(): String {
-    return inflatedView?.findViewById<EditText>(R.id.usernameEditText)?.text.toString()
+    return fragmentView?.findViewById<EditText>(R.id.usernameEditText)?.text.toString()
   }
 
   override fun getPassword(): String {
-    return inflatedView?.findViewById<EditText>(R.id.passwordEditText)?.text.toString()
+    return fragmentView?.findViewById<EditText>(R.id.passwordEditText)?.text.toString()
   }
 
   override fun showUsernameRequiredMessage() {
@@ -98,7 +99,7 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
   }
 
   private fun initClickListener() {
-    inflatedView?.findViewById<Button>(R.id.submitButton)?.setOnClickListener {
+    fragmentView?.findViewById<Button>(R.id.submitButton)?.setOnClickListener {
       userAccountPresenter.handleSubmitClick()
     }
   }

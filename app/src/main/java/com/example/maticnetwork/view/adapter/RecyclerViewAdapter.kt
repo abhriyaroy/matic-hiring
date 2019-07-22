@@ -40,11 +40,17 @@ class RecyclerViewHolder(
   private val imageLoader: ImageLoader
 ) : ViewHolder(itemView), RecyclerAdapterView {
 
-  override fun populateView(imageRes: Int, heading: String, abbreviation: String) {
+  override fun populateView(
+    imageRes: Int,
+    heading: String,
+    abbreviation: String,
+    inventoryCount: String
+  ) {
     with(itemView) {
       imageLoader.loadImage(imageView, imageRes)
       headerTextView.text = heading
       abbreviationTextView.text = abbreviation
+      inventoryCountTextView.text = inventoryCount
     }
   }
 

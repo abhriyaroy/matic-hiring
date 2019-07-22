@@ -7,6 +7,7 @@ interface HomeContract {
 
   interface HomeView : BaseView {
     fun showHashDialog(hash: String)
+    fun showImagesList()
     fun showGenericExceptionMessage()
   }
 

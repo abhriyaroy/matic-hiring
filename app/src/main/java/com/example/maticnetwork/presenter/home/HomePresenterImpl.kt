@@ -21,7 +21,7 @@ class HomePresenterImpl(
   }
 
   override fun decorateView() {
-
+    homeView?.showImagesList()
   }
 
   override fun notifyHashButtonClick() {

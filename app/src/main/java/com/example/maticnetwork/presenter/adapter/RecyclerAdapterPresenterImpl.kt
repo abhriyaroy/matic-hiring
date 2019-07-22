@@ -17,7 +17,7 @@ class RecyclerAdapterPresenterImpl : RecyclerAdapterPresenter {
     position: Int
   ) {
     with(itemList[position]) {
-      view.populateView(first, second, third)
+      view.populateView(first, second, third, (position * 100 - (position * 10)).toString())
     }
   }
 

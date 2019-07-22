@@ -5,7 +5,11 @@ import androidx.annotation.DrawableRes
 interface RecyclerAdapterContract {
 
   interface RecyclerAdapterView {
-    fun populateView(@DrawableRes imageRes: Int, heading: String, abbreviation: String)
+    fun populateView(
+      @DrawableRes imageRes: Int, heading: String,
+      abbreviation: String,
+      inventoryCount: String
+    )
   }
 
   interface RecyclerAdapterPresenter {
