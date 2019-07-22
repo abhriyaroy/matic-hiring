@@ -1,11 +1,14 @@
 package com.example.maticnetwork.view.home
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.adapter.RecyclerAdapterContract.RecyclerAdapterPresenter
 import com.example.maticnetwork.presenter.home.HomeContract.HomePresenter
 import com.example.maticnetwork.presenter.home.HomeContract.HomeView
@@ -17,9 +20,6 @@ import com.example.maticnetwork.view.adapter.RecyclerViewAdapter
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import javax.inject.Inject
-import android.app.Activity
-import android.view.inputmethod.InputMethodManager
-import com.example.maticnetwork.R
 
 
 const val HOME_FRAGMENT_TAG = "HOME_FRAGMENT"
@@ -64,6 +64,7 @@ class HomeFragment : BaseFragment(), HomeView {
     alert.setTitle(context!!.stringRes(R.string.home_fragment_hash_dialog_title))
     alert.setMessage(hash)
     alert.setPositiveButton(context!!.stringRes(R.string.home_fragment_hash_dialog_positive)) { _, _ -> }
+    alert.create()
     alert.show()
   }
 
@@ -90,8 +91,9 @@ class HomeFragment : BaseFragment(), HomeView {
     recyclerAdapter = RecyclerViewAdapter(recyclerAdapterPresenter, imageLoader)
   }
 
-  fun hideKeyboard(activity: Activity) {
-    val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+  private fun hideKeyboard(activity: Activity) {
+    val inputMethodManager =
+      activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     var view = activity.currentFocus
     if (view == null) {
       view = View(activity)
