@@ -9,6 +9,8 @@ import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.adapter.RecyclerAdapterContract.RecyclerAdapterPresenter
 import com.example.maticnetwork.presenter.home.HomeContract.HomePresenter
 import com.example.maticnetwork.presenter.home.HomeContract.HomeView
+import com.example.maticnetwork.utils.showToast
+import com.example.maticnetwork.utils.stringRes
 import com.example.maticnetwork.view.BaseFragment
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -49,6 +51,12 @@ class HomeFragment : BaseFragment(), HomeView {
     alert.setMessage(hash)
     alert.setPositiveButton("Close") { _, _ -> }
     alert.show()
+  }
+
+  override fun showGenericExceptionMessage() {
+    with(context) {
+      this?.showToast(this?.stringRes(R.string.generic_exception_message))
+    }
   }
 
   private fun attachClickListeners(view: View) {

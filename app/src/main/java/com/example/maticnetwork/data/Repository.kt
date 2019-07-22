@@ -3,10 +3,10 @@ package com.example.maticnetwork.data
 import com.example.maticnetwork.exceptions.UnauthorizedUserException
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 
 interface Repository {
-  fun getHashedCipher(plainText: String): Single<String>
+  fun getEncryptedHash(plainText: String): Single<String>
+  fun getSavedHash(): Single<String>
   fun saveHashCipher(cipher: String): Completable
   fun getEncodedCredentials(data: String): Single<String>
   fun getDecodedSavedCredentials(): Single<String>
@@ -22,8 +22,13 @@ class RepositoryImpl(
   private val backgroundSchedulers: BackgroundSchedulers
 ) : Repository {
 
-  override fun getHashedCipher(plainText: String): Single<String> {
+  override fun getEncryptedHash(plainText: String): Single<String> {
     return keyStoreHelper.getAesEncryptedText(plainText)
+      .subscribeOn(backgroundSchedulers.getIoScheduler())
+  }
+
+  override fun getSavedHash(): Single<String> {
+    return getHash()
       .subscribeOn(backgroundSchedulers.getIoScheduler())
   }
 
@@ -63,5 +68,9 @@ class RepositoryImpl(
         it.onSuccess(this)
       }
     }
+  }
+
+  private fun getHash(): Single<String> {
+    return Single.just(sharedPrefsHelper.getString(ENCRYPTED_HASH_FIELD, ""))
   }
 }
