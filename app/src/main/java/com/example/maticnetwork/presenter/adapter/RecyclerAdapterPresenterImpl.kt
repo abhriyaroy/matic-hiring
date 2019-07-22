@@ -1,7 +1,7 @@
 package com.example.maticnetwork.presenter.adapter
 
 import com.example.maticnetwork.presenter.adapter.RecyclerAdapterContract.RecyclerAdapterPresenter
-import com.example.maticnetwork.view.home.CryptoCurrencies
+import com.example.maticnetwork.utils.CryptoCurrencies
 
 class RecyclerAdapterPresenterImpl : RecyclerAdapterPresenter {
 

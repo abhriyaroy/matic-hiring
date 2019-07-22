@@ -1,6 +1,5 @@
 package com.example.maticnetwork.data
 
-import com.example.maticnetwork.exceptions.UnauthorizedUserException
 import io.reactivex.Completable
 import io.reactivex.Single
 
@@ -48,7 +47,12 @@ class RepositoryImpl(
   override fun getDecodedSavedCredentials(): Single<String> {
     return getSavedCredentials()
       .flatMap {
-        keyStoreHelper.getPlainText(it)
+        if (it.isBlank()) {
+          println("blankkkkkk")
+          Single.just("")
+        } else {
+          keyStoreHelper.getPlainText(it)
+        }
       }.subscribeOn(backgroundSchedulers.getIoScheduler())
   }
 
@@ -60,14 +64,7 @@ class RepositoryImpl(
   }
 
   private fun getSavedCredentials(): Single<String> {
-    return Single.create {
-      with(sharedPrefsHelper.getString(CREDENTIALS_FIELD)) {
-        ifBlank {
-          it.onError(UnauthorizedUserException())
-        }
-        it.onSuccess(this)
-      }
-    }
+    return Single.just(sharedPrefsHelper.getString(CREDENTIALS_FIELD))
   }
 
   private fun getHash(): Single<String> {

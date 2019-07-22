@@ -1,5 +1,6 @@
 package com.example.maticnetwork.view.useraccount
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.example.maticnetwork.view.useraccount.AccountType.EXISTING_USER
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
+
 const val USER_ACCOUNT_FRAGMENT_TAG = "USER_ACCOUNT_FRAGMENT"
 
 class UserAccountFragment : BaseFragment(), UserAccountView {
@@ -27,6 +29,7 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
   internal lateinit var userAccountPresenter: UserAccountPresenter
   private var accountType = EXISTING_USER
   private var fragmentView: View? = null
+  private var progressDialog: ProgressDialog? = null
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -60,12 +63,15 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
       context!!.stringRes(R.string.user_account_fragment_button_signin_text)
   }
 
-  override fun getUsername(): String {
-    return fragmentView?.findViewById<EditText>(R.id.usernameEditText)?.text.toString()
+  override fun showWaitLoader() {
+    progressDialog = ProgressDialog.show(
+      activity!!, "",
+      context!!.stringRes(R.string.user_account_fragment_progress_dialog_message), true
+    )
   }
 
-  override fun getPassword(): String {
-    return fragmentView?.findViewById<EditText>(R.id.passwordEditText)?.text.toString()
+  override fun hideWaitLoader() {
+    progressDialog?.hide()
   }
 
   override fun showUsernameRequiredMessage() {
@@ -89,7 +95,13 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
 
   override fun showUserNotAuthorizedException() {
     with(context!!) {
-      showToast(stringRes(R.string.user_account_user_not_authorized_message))
+      showToast(stringRes(R.string.user_account_fragment_user_not_authorized_message))
+    }
+  }
+
+  override fun showUserAlreadyPresentException() {
+    with(context!!) {
+      showToast(stringRes(R.string.user_account_fragment_user_already_present_message))
     }
   }
 
@@ -105,7 +117,10 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
 
   private fun initClickListeners() {
     fragmentView?.findViewById<Button>(R.id.submitButton)?.setOnClickListener {
-      userAccountPresenter.handleSubmitClick()
+      userAccountPresenter.handleSubmitClick(
+        fragmentView?.findViewById<EditText>(R.id.usernameEditText)?.text.toString(),
+        fragmentView?.findViewById<EditText>(R.id.passwordEditText)?.text.toString()
+      )
     }
 
     fragmentView?.findViewById<ImageView>(R.id.backImageView)?.setOnClickListener {

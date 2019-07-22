@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.adapter.RecyclerAdapterContract.RecyclerAdapterPresenter
 import com.example.maticnetwork.presenter.home.HomeContract.HomePresenter
 import com.example.maticnetwork.presenter.home.HomeContract.HomeView
@@ -18,6 +17,9 @@ import com.example.maticnetwork.view.adapter.RecyclerViewAdapter
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import javax.inject.Inject
+import android.app.Activity
+import android.view.inputmethod.InputMethodManager
+import com.example.maticnetwork.R
 
 
 const val HOME_FRAGMENT_TAG = "HOME_FRAGMENT"
@@ -47,6 +49,7 @@ class HomeFragment : BaseFragment(), HomeView {
     fragmentView = view
     attachClickListeners(view)
     initAdapter()
+    hideKeyboard(activity!!)
     homePresenter.decorateView()
   }
 
@@ -85,6 +88,15 @@ class HomeFragment : BaseFragment(), HomeView {
 
   private fun initAdapter() {
     recyclerAdapter = RecyclerViewAdapter(recyclerAdapterPresenter, imageLoader)
+  }
+
+  fun hideKeyboard(activity: Activity) {
+    val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    var view = activity.currentFocus
+    if (view == null) {
+      view = View(activity)
+    }
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
   }
 
   companion object {

@@ -9,19 +9,20 @@ interface UserAccountContract {
   interface UserAccountView : BaseView {
     fun showNewAccountButton()
     fun showExistingAccountButton()
-    fun getUsername() : String
-    fun getPassword() : String
+    fun showWaitLoader()
+    fun hideWaitLoader()
     fun showUsernameRequiredMessage()
     fun showPasswordRequiredMessage()
     fun redirectToHomeScreen()
     fun showUserNotAuthorizedException()
+    fun showUserAlreadyPresentException()
     fun showGenericException()
     fun showPreviousScreen()
   }
 
   interface UserAccountPresenter : BasePresenter<UserAccountView> {
     fun decorateView(accountType: AccountType)
-    fun handleSubmitClick()
+    fun handleSubmitClick(userName : String, password : String)
     fun handleBackButtonClick()
   }
 }

@@ -2,6 +2,7 @@ package com.example.maticnetwork.domain
 
 import com.example.maticnetwork.data.Repository
 import com.example.maticnetwork.exceptions.UnauthorizedUserException
+import com.example.maticnetwork.exceptions.UserAlreadyPresentException
 import io.reactivex.Completable
 import io.reactivex.Single
 
@@ -14,8 +15,14 @@ interface UserAccountsUseCase {
 class UserAccountsInteractor(private val repository: Repository) : UserAccountsUseCase {
 
   override fun saveNewUser(userName: String, password: String): Completable {
-    return repository.getEncryptedHash(userName + password)
-      .flatMapCompletable {
+    return repository.getDecodedSavedCredentials()
+      .flatMap {
+        if (!it.isBlank() && Pair(userName, password).toString() == it) {
+          Single.error(UserAlreadyPresentException())
+        } else {
+          repository.getEncryptedHash(userName + password)
+        }
+      }.flatMapCompletable {
         repository.saveHashCipher(it)
       }.andThen(repository.getEncodedCredentials(Pair(userName, password).toString()))
       .flatMapCompletable {

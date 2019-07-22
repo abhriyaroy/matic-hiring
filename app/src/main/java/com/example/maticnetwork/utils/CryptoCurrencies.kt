@@ -1,4 +1,4 @@
-package com.example.maticnetwork.view.home
+package com.example.maticnetwork.utils
 
 import com.example.maticnetwork.R
 
