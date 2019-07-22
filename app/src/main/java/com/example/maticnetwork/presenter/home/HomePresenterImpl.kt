@@ -4,7 +4,6 @@ import com.example.maticnetwork.presenter.home.HomeContract.HomePresenter
 import com.example.maticnetwork.presenter.home.HomeContract.HomeView
 
 class HomePresenterImpl : HomePresenter {
-
   private var homeView: HomeView? = null
 
   override fun attachView(view: HomeView) {
@@ -13,6 +12,14 @@ class HomePresenterImpl : HomePresenter {
 
   override fun detachView() {
     homeView = null
+  }
+
+  override fun decorateView() {
+
+  }
+
+  override fun notifyHashButtonClick() {
+    homeView?.showHashDialog("asdbasjbdjk")
   }
 
 }

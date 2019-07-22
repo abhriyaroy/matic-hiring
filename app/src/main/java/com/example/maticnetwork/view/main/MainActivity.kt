@@ -41,7 +41,7 @@ class MainActivity : DaggerAppCompatActivity(), MainView {
   }
 
   override fun getScope(): ScopeProvider {
-    return AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY)
+    return AndroidLifecycleScopeProvider.from(this.lifecycle, Lifecycle.Event.ON_DESTROY)
   }
 
   override fun showLandingScreen() {

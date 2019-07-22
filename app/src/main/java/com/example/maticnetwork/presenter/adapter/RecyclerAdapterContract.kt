@@ -1,7 +1,6 @@
 package com.example.maticnetwork.presenter.adapter
 
 import androidx.annotation.DrawableRes
-import com.example.maticnetwork.view.home.CryptoCurrencies
 
 interface RecyclerAdapterContract {
 
@@ -10,10 +9,9 @@ interface RecyclerAdapterContract {
   }
 
   interface RecyclerAdapterPresenter {
-    fun setList(list: List<CryptoCurrencies>)
-    fun handleItemClick(position: Int)
+    fun handleItemLongClick(position: Int)
     fun handleGetItemCountCall(): Int
-    fun handleBindViewHolderCall(view : RecyclerAdapterView, position: Int)
+    fun handleBindViewHolderCall(view: RecyclerAdapterView, position: Int)
   }
 
 }

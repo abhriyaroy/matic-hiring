@@ -6,6 +6,8 @@ import com.example.maticnetwork.data.*
 import com.example.maticnetwork.di.scopes.PerApplication
 import com.example.maticnetwork.domain.UserAccountsInteractor
 import com.example.maticnetwork.domain.UserAccountsUseCase
+import com.example.maticnetwork.view.ImageLoader
+import com.example.maticnetwork.view.ImageLoaderImpl
 import com.example.maticnetwork.view.MainScheduler
 import com.example.maticnetwork.view.MainSchedulerImpl
 import dagger.Module
@@ -50,4 +52,8 @@ class AppModule {
   @Provides
   fun providesUserAccountUseCase(repository: Repository): UserAccountsUseCase =
     UserAccountsInteractor(repository)
+
+  @PerApplication
+  @Provides
+  fun providesImageLoader(context: Context): ImageLoader = ImageLoaderImpl(context)
 }

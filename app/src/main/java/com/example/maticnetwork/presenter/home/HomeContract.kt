@@ -6,10 +6,11 @@ import com.example.maticnetwork.presenter.BaseView
 interface HomeContract {
 
   interface HomeView : BaseView {
-    fun showHashDialog(decryptedHash: String)
+    fun showHashDialog(hash: String)
   }
 
   interface HomePresenter : BasePresenter<HomeView>{
-
+    fun decorateView()
+    fun notifyHashButtonClick()
   }
 }
