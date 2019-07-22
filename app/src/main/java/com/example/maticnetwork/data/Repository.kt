@@ -34,7 +34,6 @@ class RepositoryImpl(
   override fun saveHashCipher(cipher: String): Completable {
     return Completable.create {
       sharedPrefsHelper.putString(ENCRYPTED_HASH_FIELD, cipher)
-      println("savvvedddd")
       it.onComplete()
     }.subscribeOn(backgroundSchedulers.getIoScheduler())
   }
@@ -48,7 +47,6 @@ class RepositoryImpl(
     return getSavedCredentials()
       .flatMap {
         if (it.isBlank()) {
-          println("blankkkkkk")
           Single.just("")
         } else {
           keyStoreHelper.getPlainText(it)

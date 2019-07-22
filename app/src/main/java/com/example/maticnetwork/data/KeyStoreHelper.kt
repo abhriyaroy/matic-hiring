@@ -42,14 +42,12 @@ class KeyStoreHelperImpl(
   }
 
   override fun getAesEncryptedText(plainText: String): Single<String> {
-    println("plaintest for aes $plainText")
     return Single.create {
       if (!keyStore.containsAlias(alias)) {
         genKeyStoreKey(context)
         genAESKey()
       }
       with(encryptAES(plainText)) {
-        println("recovered plaintest aes ${getAesDecryptedText(this).blockingGet()}")
         it.onSuccess(this)
       }
     }
@@ -69,7 +67,6 @@ class KeyStoreHelperImpl(
   override fun getSecurePlainText(plainText: String): Single<String> {
     return Single.create {
       with(encryptRSA(plainText.toByteArray())) {
-        println("encodeed and decoded again gives     " + String(decryptRSA(this)))
         it.onSuccess(this)
       }
     }
