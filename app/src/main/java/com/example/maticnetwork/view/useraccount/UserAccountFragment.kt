@@ -77,7 +77,7 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
   }
 
   override fun redirectToHomeScreen() {
-    println("YYYYYYYYYYYYYYYAAAAAAAAAAAAAAAAAAYYYYYYYYYYYYYYYYYYYYYYYYY")
+
   }
 
   override fun showUserNotAuthorizedException() {

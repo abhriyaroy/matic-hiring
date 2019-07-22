@@ -15,5 +15,4 @@ class HomePresenterImpl : HomePresenter {
     homeView = null
   }
 
-
 }
