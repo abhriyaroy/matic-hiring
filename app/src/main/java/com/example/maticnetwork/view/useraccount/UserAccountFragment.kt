@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import com.example.maticnetwork.R
 import com.example.maticnetwork.presenter.useraccount.UserAccountContract.UserAccountPresenter
 import com.example.maticnetwork.presenter.useraccount.UserAccountContract.UserAccountView
@@ -40,7 +41,7 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
     fragmentView = view
     userAccountPresenter.attachView(this)
     userAccountPresenter.decorateView(accountType)
-    initClickListener()
+    initClickListeners()
   }
 
   override fun onDestroy() {
@@ -98,9 +99,17 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
     }
   }
 
-  private fun initClickListener() {
+  override fun showPreviousScreen() {
+    activity?.onBackPressed()
+  }
+
+  private fun initClickListeners() {
     fragmentView?.findViewById<Button>(R.id.submitButton)?.setOnClickListener {
       userAccountPresenter.handleSubmitClick()
+    }
+
+    fragmentView?.findViewById<ImageView>(R.id.backImageView)?.setOnClickListener {
+      userAccountPresenter.handleBackButtonClick()
     }
   }
 

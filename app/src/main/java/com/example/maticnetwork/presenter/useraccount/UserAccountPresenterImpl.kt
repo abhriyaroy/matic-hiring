@@ -48,6 +48,10 @@ class UserAccountPresenterImpl(
     }
   }
 
+  override fun handleBackButtonClick() {
+    userAccountView?.showPreviousScreen()
+  }
+
   private fun saveUser(userName: String, password: String) {
     userAccountsUseCase.saveNewUser(userName, password)
       .observeOn(mainScheduler.getMainScheduler())

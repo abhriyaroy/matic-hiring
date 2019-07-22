@@ -16,10 +16,12 @@ interface UserAccountContract {
     fun redirectToHomeScreen()
     fun showUserNotAuthorizedException()
     fun showGenericException()
+    fun showPreviousScreen()
   }
 
   interface UserAccountPresenter : BasePresenter<UserAccountView> {
     fun decorateView(accountType: AccountType)
     fun handleSubmitClick()
+    fun handleBackButtonClick()
   }
 }
