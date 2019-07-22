@@ -13,10 +13,11 @@
   <string name="user_account_fragment_button_signin_text">Sign In</string>
   <string name="user_account_fragment_username_required_message">Please type an username</string>
   <string name="user_account_fragment_password_required_message">Please type a password</string>
-  <string name="user_account_fragment_user_not_authorized_message">Please use Create Account option to register for a new Account</string>
+  <string name="user_account_fragment_user_not_authorized_message">Please use Create Account option to register for a new account</string>
   <string name="user_account_fragment_user_already_present_message">Please use Sign In option as user is already present</string>
   <string name="user_account_fragment_progress_dialog_message">Loading. Please wait…</string>
 
   <string name="home_fragment_hash_dialog_title">Hash</string>
   <string name="home_fragment_hash_dialog_positive">Close</string>
+  <string name="home_fragment_recycler_heading_text">My Tokens</string>
 </resources>

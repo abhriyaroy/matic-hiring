@@ -10,9 +10,9 @@
     android:id="@+id/hashCodeButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="24dp"
+    android:layout_marginEnd="@dimen/home_fragment_hash_button_margin_end"
+    android:layout_marginStart="@dimen/home_fragment_hash_button_margin_start"
+    android:layout_marginTop="@dimen/home_fragment_hash_button_margin_top"
     android:text="Button"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.498"
@@ -22,14 +22,14 @@
     tools:layout_conversion_absoluteWidth="88dp" />
 
   <TextView
-    android:id="@+id/textView"
+    android:id="@+id/recyclerHeading"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="24dp"
-    android:text="My Tokens"
-    android:textSize="22sp"
+    android:layout_marginEnd="@dimen/home_fragment_recycler_heading_margin_end"
+    android:layout_marginStart="@dimen/home_fragment_recycler_heading_margin_start"
+    android:layout_marginTop="@dimen/home_fragment_recycler_heading_margin_top"
+    android:text="@string/home_fragment_recycler_heading_text"
+    android:textSize="@dimen/home_fragment_recycler_heading_text_size"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.08"
     app:layout_constraintStart_toStartOf="parent"
@@ -38,11 +38,11 @@
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginEnd="8dp"
+    android:layout_height="@dimen/home_fragment_recycler_view_height"
+    android:layout_marginEnd="@dimen/home_fragment_recycler_view_margin_end"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView" />
+    app:layout_constraintTop_toBottomOf="@+id/recyclerHeading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

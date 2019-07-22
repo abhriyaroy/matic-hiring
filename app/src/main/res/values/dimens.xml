@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="recycler_item_dialog_imageview_width">100dp</dimen>
+  <dimen name="recycler_item_dialog_imageview_height">100dp</dimen>
+  <dimen name="recycler_item_dialog_imageview_margin">16dp</dimen>
+
+  <dimen name="home_fragment_hash_button_margin_end">8dp</dimen>
+  <dimen name="home_fragment_hash_button_margin_start">8dp</dimen>
+  <dimen name="home_fragment_hash_button_margin_top">24dp</dimen>
+  <dimen name="home_fragment_recycler_heading_margin_end">8dp</dimen>
+  <dimen name="home_fragment_recycler_heading_margin_start">8dp</dimen>
+  <dimen name="home_fragment_recycler_heading_margin_top">24dp</dimen>
+  <dimen name="home_fragment_recycler_heading_text_size">22sp</dimen>
+  <dimen name="home_fragment_recycler_view_height">0dp</dimen>
+  <dimen name="home_fragment_recycler_view_margin_end">8dp</dimen>
+
+  <dimen name="landing_fragment_new_account_button_margin_end">8dp</dimen>
+  <dimen name="landing_fragment_new_account_button_margin_left">8dp</dimen>
+  <dimen name="landing_fragment_new_account_button_margin_right">8dp</dimen>
+  <dimen name="landing_fragment_new_account_button_margin_start">8dp</dimen>
+  <dimen name="landing_fragment_new_account_button_margin_top">16dp</dimen>
+  <dimen name="landing_fragment_sign_in_button_margin_end">8dp</dimen>
+  <dimen name="landing_fragment_sign_in_button_margin_left">8dp</dimen>
+  <dimen name="landing_fragment_sign_in_button_margin_right">8dp</dimen>
+  <dimen name="landing_fragment_sign_in_button_margin_start">8dp</dimen>
+  <dimen name="landing_fragment_sign_in_button_margin_top">16dp</dimen>
+
+  <dimen name="user_account_fragment_back_icon_margin_start">24dp</dimen>
+  <dimen name="user_account_fragment_back_icon_margin_top">24dp</dimen>
+  <dimen name="user_account_fragment_submit_button_margin">8dp</dimen>
+  <dimen name="user_account_fragment_submit_button_margin_top">16dp</dimen>
+  <dimen name="user_account_fragment_password_edittext_margin">8dp</dimen>
+  <dimen name="user_account_fragment_password_edittext_margin_top">16dp</dimen>
+  <dimen name="user_account_fragment_username_edittext_margin">8dp</dimen>
+  <dimen name="recycler_view_item_inventory_textview_margin_end">8dp</dimen>
+  <dimen name="recycler_view_item_inventory_textview_margin_start">8dp</dimen>
+  <dimen name="recycler_view_item_abbreviation_textview_margin_start">8dp</dimen>
+  <dimen name="recycler_view_item_abbreviation_textview_margin_end">8dp</dimen>
+  <dimen name="recycler_view_item_header_textview_margin_start">8dp</dimen>
+  <dimen name="recycler_view_item_header_textview_margin_top">32dp</dimen>
+  <dimen name="recycler_view_item_header_textview_text_size">18sp</dimen>
+  <dimen name="recycler_view_item_imageview_width">50dp</dimen>
+  <dimen name="recycler_view_item_imageview_height">50dp</dimen>
+  <dimen name="recycler_view_item_imageview_margin_start">24dp</dimen>
+  <dimen name="recycler_view_item_imageview_margin_top">32dp</dimen>
+</resources>

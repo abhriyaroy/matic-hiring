@@ -7,10 +7,10 @@
 
   <ImageView
     android:id="@+id/imageView"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+    android:layout_width="@dimen/recycler_item_dialog_imageview_width"
+    android:layout_height="@dimen/recycler_item_dialog_imageview_height"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="16dp"
+    android:layout_margin="@dimen/recycler_item_dialog_imageview_margin"
     app:srcCompat="@drawable/ic_abt" />
 
 </LinearLayout>

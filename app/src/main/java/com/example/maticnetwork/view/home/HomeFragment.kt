@@ -21,7 +21,6 @@ import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import javax.inject.Inject
 
-
 const val HOME_FRAGMENT_TAG = "HOME_FRAGMENT"
 
 class HomeFragment : BaseFragment(), HomeView {
@@ -60,12 +59,13 @@ class HomeFragment : BaseFragment(), HomeView {
   }
 
   override fun showHashDialog(hash: String) {
-    val alert = AlertDialog.Builder(context!!)
-    alert.setTitle(context!!.stringRes(R.string.home_fragment_hash_dialog_title))
-    alert.setMessage(hash)
-    alert.setPositiveButton(context!!.stringRes(R.string.home_fragment_hash_dialog_positive)) { _, _ -> }
-    alert.create()
-    alert.show()
+    with(AlertDialog.Builder(context!!)) {
+      setTitle(context!!.stringRes(R.string.home_fragment_hash_dialog_title))
+      setMessage(hash)
+      setPositiveButton(context!!.stringRes(R.string.home_fragment_hash_dialog_positive)) { _, _ -> }
+      create()
+      show()
+    }
   }
 
   override fun showImagesList() {

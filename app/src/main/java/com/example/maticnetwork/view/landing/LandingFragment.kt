@@ -57,7 +57,7 @@ class LandingFragment : BaseFragment(), LandingView {
       newAccountButton.setOnClickListener {
         landingPresenter.handleNewAccountClick()
       }
-      submitButton.setOnClickListener {
+      signInButton.setOnClickListener {
         landingPresenter.handleSignInClick()
       }
     }
