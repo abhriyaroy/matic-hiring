@@ -12,6 +12,8 @@ import com.example.maticnetwork.presenter.useraccount.UserAccountContract.UserAc
 import com.example.maticnetwork.utils.showToast
 import com.example.maticnetwork.utils.stringRes
 import com.example.maticnetwork.view.BaseFragment
+import com.example.maticnetwork.view.home.HOME_FRAGMENT_TAG
+import com.example.maticnetwork.view.home.HomeFragment
 import com.example.maticnetwork.view.useraccount.AccountType.EXISTING_USER
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -77,7 +79,10 @@ class UserAccountFragment : BaseFragment(), UserAccountView {
   }
 
   override fun redirectToHomeScreen() {
-
+    activity?.supportFragmentManager?.beginTransaction()
+      ?.replace(R.id.mainContainerFragment, HomeFragment.newInstance(), HOME_FRAGMENT_TAG)
+      ?.addToBackStack(HOME_FRAGMENT_TAG)
+      ?.commit()
   }
 
   override fun showUserNotAuthorizedException() {
