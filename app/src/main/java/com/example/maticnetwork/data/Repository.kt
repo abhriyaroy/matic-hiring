@@ -12,8 +12,8 @@ interface Repository {
   fun saveEncodedCredentials(credentials: String): Completable
 }
 
-private const val CREDENTIALS_FIELD = "CREDENTIALS"
-private const val ENCRYPTED_HASH_FIELD = "ENCRYPTED_HASH"
+internal const val CREDENTIALS_FIELD = "CREDENTIALS"
+internal const val ENCRYPTED_HASH_FIELD = "ENCRYPTED_HASH"
 
 class RepositoryImpl(
   private val keyStoreHelper: KeyStoreHelper,

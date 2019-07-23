@@ -6,7 +6,9 @@ import android.content.SharedPreferences
 
 
 interface SharedPrefsHelper {
+  @Throws(Exception::class)
   fun getString(key: String, defaultValue: String = ""): String
+
   fun putString(key: String, value: String)
   fun setIV(iv: String)
   fun getIV(): String
