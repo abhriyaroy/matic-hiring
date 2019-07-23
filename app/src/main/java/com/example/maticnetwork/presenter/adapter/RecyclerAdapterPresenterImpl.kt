@@ -16,10 +16,7 @@ class RecyclerAdapterPresenterImpl : RecyclerAdapterPresenter {
 
   override fun handleGetItemCountCall() = itemList.size
 
-  override fun handleBindViewHolderCall(
-    view: RecyclerAdapterView,
-    position: Int
-  ) {
+  override fun handleBindViewHolderCall(view: RecyclerAdapterView, position: Int) {
     with(itemList[position]) {
       view.populateView(first, second, third, (position * 100 - (position * 10)).toString())
     }
