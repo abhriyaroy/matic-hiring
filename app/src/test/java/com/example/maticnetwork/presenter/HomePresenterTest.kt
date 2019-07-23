@@ -77,8 +77,8 @@ class HomePresenterTest {
 
   @After
   fun teardown() {
-    homePresenter.detachView()
     verifyNoMoreInteractions(homeViewMock, userAccountsUseCase, mainScheduler)
+    homePresenter.detachView()
   }
 
 }

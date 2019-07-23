@@ -75,8 +75,8 @@ class MainPresenterTest {
 
   @After
   fun tearDown() {
-    mainPresenter.detachView()
     verifyNoMoreInteractions(mainViewMock)
+    mainPresenter.detachView()
   }
 
 }

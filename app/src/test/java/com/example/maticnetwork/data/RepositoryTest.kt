@@ -119,7 +119,8 @@ class RepositoryTest {
     verify(keyStoreHelper).getPlainText(randomArgumentString)
   }
 
-  @Test fun `should call shared prefs helper and save credentials on saveEncodedCredentials call success`(){
+  @Test
+  fun `should call shared prefs helper and save credentials on saveEncodedCredentials call success`() {
     repository.saveEncodedCredentials(randomArgumentString).test().assertComplete()
 
     verify(sharedPrefsHelper).putString(CREDENTIALS_FIELD, randomArgumentString)

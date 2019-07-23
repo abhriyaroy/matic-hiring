@@ -168,8 +168,8 @@ class UserAccountPresenterTest {
 
   @After
   fun tearDown() {
-    userAccountPresenter.detachView()
     verifyNoMoreInteractions(userAccountViewMock, mainScheduler, userAccountsUseCase)
+    userAccountPresenter.detachView()
   }
 
 }

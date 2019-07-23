@@ -11,7 +11,7 @@ interface HomeContract {
     fun showGenericExceptionMessage()
   }
 
-  interface HomePresenter : BasePresenter<HomeView>{
+  interface HomePresenter : BasePresenter<HomeView> {
     fun decorateView()
     fun notifyHashButtonClick()
   }

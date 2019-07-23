@@ -40,8 +40,8 @@ class LandingPresenterTest {
 
   @After
   fun tearDown() {
-    landingPresenter.detachView()
     verifyNoMoreInteractions(landingViewMock)
+    landingPresenter.detachView()
   }
 
 }

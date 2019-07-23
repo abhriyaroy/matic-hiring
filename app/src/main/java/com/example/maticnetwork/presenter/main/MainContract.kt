@@ -7,7 +7,7 @@ interface MainContract {
 
   interface MainView : BaseView {
     fun showLandingScreen()
-    fun getCurrentScreenTag() : String
+    fun getCurrentScreenTag(): String
     fun showPreviousScreen()
     fun showExitConfirmation()
     fun startBackPressedFlagResetTimer()

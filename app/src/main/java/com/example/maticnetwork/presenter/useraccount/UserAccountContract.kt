@@ -22,7 +22,7 @@ interface UserAccountContract {
 
   interface UserAccountPresenter : BasePresenter<UserAccountView> {
     fun decorateView(accountType: AccountType)
-    fun handleSubmitClick(userName : String, password : String)
+    fun handleSubmitClick(userName: String, password: String)
     fun handleBackButtonClick()
   }
 }
