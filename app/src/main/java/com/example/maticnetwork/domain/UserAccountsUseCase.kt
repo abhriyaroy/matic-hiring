@@ -17,7 +17,6 @@ class UserAccountsInteractor(private val repository: Repository) : UserAccountsU
   override fun saveNewUser(userName: String, password: String): Completable {
     return repository.getDecodedSavedCredentials()
       .flatMap {
-        println(it)
         if (!it.isBlank() && Pair(userName, password).toString() == it) {
           Single.error(UserAlreadyPresentException())
         } else {

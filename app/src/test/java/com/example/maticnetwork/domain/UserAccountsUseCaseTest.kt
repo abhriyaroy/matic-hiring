@@ -1,6 +1,7 @@
 package com.example.maticnetwork.domain
 
 import com.example.maticnetwork.data.Repository
+import com.example.maticnetwork.exceptions.UnauthorizedUserException
 import com.example.maticnetwork.exceptions.UserAlreadyPresentException
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
@@ -31,8 +32,20 @@ class UserAccountsUseCaseTest {
   }
 
   @Test
+  fun `should return exception on saveNewUser call failure due to getDecodedSavedCredentials error`() {
+    `when`(repository.getDecodedSavedCredentials()).thenReturn(Single.error(Exception()))
+    `when`(repository.getEncodedCredentials(pair.toString()))
+      .thenReturn(Single.just(""))
+
+    userAccountsUseCase.saveNewUser(userName, password).test()
+      .assertError(Exception::class.java)
+
+    verify(repository).getDecodedSavedCredentials()
+    verify(repository).getEncodedCredentials(pair.toString())
+  }
+
+  @Test
   fun `should return user already present exception on saveNewUser call failure due to user already registered`() {
-    println(pair.toString())
     `when`(repository.getDecodedSavedCredentials()).thenReturn(Single.just(pair.toString()))
     `when`(repository.getEncodedCredentials(pair.toString()))
       .thenReturn(Single.just(""))
@@ -145,6 +158,36 @@ class UserAccountsUseCaseTest {
     verify(repository).saveHashCipher(randomEncryptedHash)
     verify(repository).getEncodedCredentials(pair.toString())
     verify(repository).saveEncodedCredentials(randomEncodedCredentials)
+  }
+
+  @Test
+  fun `should return exception on verifyExistingUser call failure due to getDecodedSavedCredentials error`() {
+    `when`(repository.getDecodedSavedCredentials()).thenReturn(Single.error(Exception()))
+
+    userAccountsUseCase.verifyExistingUser(userName, password).test()
+      .assertError(Exception::class.java)
+
+    verify(repository).getDecodedSavedCredentials()
+  }
+
+  @Test
+  fun `should return unauthorized user exception on verifyExistingUser call failure`() {
+    `when`(repository.getDecodedSavedCredentials()).thenReturn(Single.just(randomUUID().toString()))
+
+    userAccountsUseCase.verifyExistingUser(userName, password).test()
+      .assertError(UnauthorizedUserException::class.java)
+
+    verify(repository).getDecodedSavedCredentials()
+  }
+
+  @Test
+  fun `should complete on verifyExistingUser call success`() {
+    `when`(repository.getDecodedSavedCredentials()).thenReturn(Single.just(pair.toString()))
+
+    userAccountsUseCase.verifyExistingUser(userName, password).test()
+      .assertComplete()
+
+    verify(repository).getDecodedSavedCredentials()
   }
 
   @After
