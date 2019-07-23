@@ -18,11 +18,11 @@ import java.util.UUID.randomUUID
 class RepositoryTest {
 
   @Mock
-  internal lateinit var keyStoreHelper: KeyStoreHelper
+  private lateinit var keyStoreHelper: KeyStoreHelper
   @Mock
-  internal lateinit var sharedPrefsHelper: SharedPrefsHelper
+  private lateinit var sharedPrefsHelper: SharedPrefsHelper
   @Mock
-  internal lateinit var backgroundSchedulers: BackgroundSchedulers
+  private lateinit var backgroundSchedulers: BackgroundSchedulers
   private lateinit var repository: Repository
   private var randomArgumentString = randomUUID().toString()
   private var randomResultString = randomUUID().toString()
