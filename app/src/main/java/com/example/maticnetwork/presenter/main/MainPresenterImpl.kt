@@ -7,7 +7,7 @@ import com.example.maticnetwork.view.useraccount.USER_ACCOUNT_FRAGMENT_TAG
 class MainPresenterImpl : MainPresenter {
 
   private var mainView: MainView? = null
-  private var isExitConfirmationShown = false
+  internal var isExitConfirmationShown = false
 
   override fun attachView(view: MainView) {
     mainView = view
