@@ -16,7 +16,7 @@ class UserAccountPresenterImpl(
 ) : UserAccountPresenter {
 
   private var userAccountView: UserAccountView? = null
-  private var accountType: AccountType = EXISTING_USER
+  internal var accountType: AccountType = EXISTING_USER
 
   override fun attachView(view: UserAccountView) {
     userAccountView = view
